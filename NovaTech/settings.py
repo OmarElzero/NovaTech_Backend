@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'channels',
     'game.apps.GameConfig',
+    # 'daphne'
 ]
 ASGI_APPLICATION = 'NovaTech.asgi.application'
 
