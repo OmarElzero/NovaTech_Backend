@@ -60,8 +60,11 @@ class UserViewSet(viewsets.ModelViewSet):
 
         user = User.objects.create_user(
             username=username,
+            firstName=self.request.data.get('firstName'),
+            lastName=self.request.data.get('lastName'),
             email=self.request.data.get('email'),
-            password=self.request.data.get('password')
+            password=self.request.data.get('password'),
+
         )
         serializer.save(user=user)
 

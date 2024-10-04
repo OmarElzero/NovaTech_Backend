@@ -15,10 +15,9 @@ class ExoplanetConsumer(AsyncWebsocketConsumer):
         token = self.scope['query_string'].decode('utf-8').split('token=')[-1]
         exoplanet_code = self.scope['url_route']['kwargs']['code']
 
-        # Authenticate the user using the token
         user = await self.get_user_from_token(token)
         if not user:
-            await self.close()  # Close connection if token is invalid or user does not exist
+            await self.close()
             return
 
         # Fetch the exoplanet by code
