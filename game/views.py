@@ -54,14 +54,14 @@ class UserViewSet(viewsets.ModelViewSet):
         return [IsAuthenticated()]
 
     def perform_create(self, serializer):
-        username = self.request.data.get('username')
+        username = self.request.data.get('userName')
         if User.objects.filter(username=username).exists():
             return Response({'error': 'Username already exists'},status=status.HTTP_400_BAD_REQUEST)
 
         user = User.objects.create_user(
             username=username,
-            firstName=self.request.data.get('firstName'),
-            lastName=self.request.data.get('lastName'),
+            # firstName=self.request.data.get('firstName'),
+            # lastName=self.request.data.get('lastName'),
             email=self.request.data.get('email'),
             password=self.request.data.get('password'),
 
@@ -72,7 +72,7 @@ class UserViewSet(viewsets.ModelViewSet):
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def login(request):
-    username_or_email = request.data.get('username')
+    username_or_email = request.data.get('userName')
     password = request.data.get('password')
 
     if not username_or_email or not password:

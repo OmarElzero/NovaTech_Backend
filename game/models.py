@@ -15,7 +15,7 @@ class Exoplanet(models.Model):
 
 class Users(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    username = models.CharField(max_length=100, unique=True)
+    userName = models.CharField(max_length=100, unique=True)
     firstName = models.CharField(max_length=100)
     lastName = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
