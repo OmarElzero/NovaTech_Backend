@@ -87,12 +87,14 @@ def login(request):
             username_or_email = user_profile.username
         except Users.DoesNotExist:
             return Response({'error': 'User does not exist'}, status=status.HTTP_400_BAD_REQUEST)
-
+    else:
+        user_profile = Users.objects.filter(userName=username_or_email).first()
     # Authenticate user
     user = authenticate(username=username_or_email, password=password)
     if user:
         token, created = Token.objects.get_or_create(user=user)
-        return Response({'success': True, 'token': token.key}, status=status.HTTP_200_OK)
+
+        return Response({'success': True, 'token': token.key , 'id' : user_profile.id}, status=status.HTTP_200_OK)
     else:
         return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
 
