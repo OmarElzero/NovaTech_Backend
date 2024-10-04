@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'channels',
     'game.apps.GameConfig',
     # 'daphne'
+    'corsheaders'
 ]
 ASGI_APPLICATION = 'NovaTech.asgi.application'
 
@@ -52,8 +53,8 @@ REST_FRAMEWORK = {
 
     ],
 'DEFAULT_PERMISSION_CLASSES': [
-        # 'rest_framework.permissions.IsAuthenticated',
-        'rest_framework.permissions.AllowAny',
+        'rest_framework.permissions.IsAuthenticated',
+        # 'rest_framework.permissions.AllowAny',
     ],
 }
 
@@ -66,11 +67,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-# CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:3000",
-# ]
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
 
-CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOW_ALL_ORIGINS = True
 
 
 ROOT_URLCONF = 'NovaTech.urls'
