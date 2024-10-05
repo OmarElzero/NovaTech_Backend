@@ -109,9 +109,11 @@ def logout(request):
         return Response({'error': 'Token not found or invalid'}, status=status.HTTP_400_BAD_REQUEST)
     except Exception as e:
         return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+@permission_classes([AllowAny])
 @api_view(['GET'])
 def test(request):
     return HttpResponse("hello")
+@permission_classes([AllowAny])
 @api_view(['POST'])
 def test2(request):
     return HttpResponse("hello from point 2")
