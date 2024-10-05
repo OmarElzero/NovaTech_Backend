@@ -1,5 +1,5 @@
 crud users
-http://127.0.0.1:8000/users/
+52.91.153.146/users/
 http://127.0.0.1:8000/login/
 http://127.0.0.1:8000/logout/
 http://127.0.0.1:8000/unlock/{put id here}/
