@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
@@ -108,3 +109,9 @@ def logout(request):
         return Response({'error': 'Token not found or invalid'}, status=status.HTTP_400_BAD_REQUEST)
     except Exception as e:
         return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+@api_view(['GET'])
+def test(request):
+    return HttpResponse("hello")
+@api_view(['POST'])
+def test2(request):
+    return HttpResponse("hello from point 2")
